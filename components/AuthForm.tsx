@@ -138,7 +138,7 @@ const AuthForm = ({ type }: { type: "register" | "login" }) => {
             )}
 
             <button className="button" type="submit">
-              {type === "register" ? "Join Free" : "Let's Watch"}
+              {type === "register" ? "Criar conta" : "Entrar"}
             </button>
           </form>
 

@@ -23,7 +23,6 @@ const Modal = ({ movie, closeModal }: Props) => {
   const [video, setVideo] = useState("");
   const [genres, setGenres] = useState<Genre[]>([]);
   const [loading, setLoading] = useState(false);
-  const [user, setUser] = useState<User | null>(null);
   const [isFavorite, setIsFavorite] = useState(false);
 
 
@@ -87,11 +86,11 @@ const Modal = ({ movie, closeModal }: Props) => {
       <div className="modal-content">
         <div className="flex justify-between">
           <div className="flex gap-2">
-            <p className="text-base-bold">Name:</p>
+            <p className="text-base-bold">Nome:</p>
             <p className="text-base-light">{movie?.title || movie?.name}</p>
           </div>
           <div className="flex gap-3">
-            <p className="text-base-bold">Add To List</p>
+            <p className="text-base-bold">Adicionar à lista</p>
             {isFavorite ? (
               <RemoveCircle
                 className="cursor-pointer text-pink-1"
@@ -105,19 +104,19 @@ const Modal = ({ movie, closeModal }: Props) => {
         </div>
 
         <div className="flex gap-2">
-          <p className="text-base-bold">Release Date:</p>
+          <p className="text-base-bold">Lançamento:</p>
           <p className="text-base-light">{movie?.release_date}</p>
         </div>
 
         <p className="text-base-light">{movie?.overview}</p>
 
         <div className="flex gap-2">
-          <p className="text-base-bold">Rating:</p>
+          <p className="text-base-bold">Nota:</p>
           <p className="text-base-light">{movie?.vote_average}</p>
         </div>
 
         <div className="flex gap-2">
-          <p className="text-base-bold">Genres:</p>
+          <p className="text-base-bold">Generos:</p>
           <p className="text-base-light">
             {genres.map((genre) => genre.name).join(", ")}
           </p>

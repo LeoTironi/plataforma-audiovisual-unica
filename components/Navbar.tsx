@@ -29,27 +29,27 @@ const Navbar = () => {
   }, []);
 
   const handleLogout = () => {
-    signOut({ callbackUrl: "/login" });
+    router.push("/login")
   }
 
   return (
-    <div className={`navbar ${isScrolled && "bg-black-1"}`}>
+    <div className={`navbar ${isScrolled && "bg-white-1"}`}>
       <Link href="/">
         <img src="/assets/logo.png" alt="logo" className="logo" />
       </Link>
       <div className="nav-links">
         <Link href="/" className="nav-link">
-          Home
+          Início
         </Link>
         <Link href="/my-list" className="nav-link">
-          My List
+          Minha Lista
         </Link>
       </div>
 
       <div className="nav-right">
         <div className="search">
           <input
-            placeholder="Search movie..."
+            placeholder="Buscar Filme..."
             className="input-search"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
@@ -71,8 +71,8 @@ const Navbar = () => {
 
         {dropdownMenu && (
           <div className="dropdown-menu">
-            <Link href="/">Home</Link>
-            <Link href="/my-list">My List</Link>
+            <Link href="/">Início</Link>
+            <Link href="/my-list">Minha Lista</Link>
             <a onClick={handleLogout}>Sair</a>
           </div>
         )}

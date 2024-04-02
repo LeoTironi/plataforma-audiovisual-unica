@@ -34,10 +34,10 @@ const HeroCard = ({ trendingMovie }: { trendingMovie: Movie }) => {
 
         <div className="hero-btns">
           <button className="hero-btn" onClick={openModal}>
-            <PlayCircleOutlineOutlined /> Play Now
+            <PlayCircleOutlineOutlined /> Assistir
           </button>
           <button className="hero-btn" onClick={openModal}>
-            <InfoOutlined /> More Info
+            <InfoOutlined /> Mais informações
           </button>
         </div>
       </div>
