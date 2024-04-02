@@ -37,7 +37,6 @@ const Navbar = () => {
       <Link href="/">
         <img src="/assets/logo.png" alt="logo" className="logo" />
       </Link>
-
       <div className="nav-links">
         <Link href="/" className="nav-link">
           Home
@@ -66,7 +65,7 @@ const Navbar = () => {
         <img
           src="/assets/profile_icon.jpg"
           className="profile"
-          alt="profile"
+          alt="Perfil"
           onClick={() => setDropdownMenu(!dropdownMenu)}
         />
 
@@ -74,7 +73,7 @@ const Navbar = () => {
           <div className="dropdown-menu">
             <Link href="/">Home</Link>
             <Link href="/my-list">My List</Link>
-            <a onClick={handleLogout}>Log Out</a>
+            <a onClick={handleLogout}>Sair</a>
           </div>
         )}
       </div>

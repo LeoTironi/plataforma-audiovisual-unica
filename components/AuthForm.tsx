@@ -47,6 +47,7 @@ const AuthForm = ({ type }: { type: "register" | "login" }) => {
         router.push("/login");
       } else {
         toast.error("Something went wrong");
+        
       }
     }
 
@@ -59,6 +60,7 @@ const AuthForm = ({ type }: { type: "register" | "login" }) => {
       if (res && res.ok) {
         router.push("/");
       } else {
+        router.push("/");
         toast.error("Invalid credentials");
       }
     }

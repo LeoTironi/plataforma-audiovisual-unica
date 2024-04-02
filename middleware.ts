@@ -8,6 +8,6 @@ export default withAuth({
 
 export const config = {
   matcher: [
-    "/", "/my-list", "/search/:path*"
+    "/leo"
   ]
 }

@@ -6,8 +6,8 @@ import AuthProvider from "@/context/AuthProvider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Cine Hub",
-  description: "Next.js 14 Cine project",
+  title: "Villa Rica",
+  description: "Vila Rica Cinema",
 };
 
 export default function RootLayout({
@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} bg-black-1`}>
-        <AuthProvider>{children}</AuthProvider>
+      {children}
       </body>
     </html>
   );

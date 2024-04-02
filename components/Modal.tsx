@@ -2,8 +2,6 @@
 
 import { Genre, Movie, Video } from "@lib/types";
 import { AddCircle, CancelRounded, RemoveCircle } from "@mui/icons-material";
-import { set } from "mongoose";
-import { useSession } from "next-auth/react";
 import React, { useEffect, useState } from "react";
 import Loader from "./Loader";
 import { useRouter } from "next/navigation";
@@ -24,11 +22,10 @@ const Modal = ({ movie, closeModal }: Props) => {
 
   const [video, setVideo] = useState("");
   const [genres, setGenres] = useState<Genre[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [user, setUser] = useState<User | null>(null);
   const [isFavorite, setIsFavorite] = useState(false);
 
-  const { data: session } = useSession();
 
   const options = {
     method: "GET",
@@ -64,42 +61,11 @@ const Modal = ({ movie, closeModal }: Props) => {
   useEffect(() => {
     getMovieDetails();
   }, [movie]);
-
-
   // HANDLE MY LIST
-  const getUser = async () => {
-    try {
-      const res = await fetch(`/api/user/${session?.user?.email}`);
-      const data = await res.json();
-      setUser(data);
-      setIsFavorite(data.favorites.find((item: number) => item === movie.id));
-      setLoading(false);
-    } catch (err) {
-      console.log("Error fetching user", err);
-    }
-  };
 
-  useEffect(() => {
-    if (session) getUser();
-  }, [session]);
 
-  const handleMyList = async () => {
-    try {
-      const res = await fetch(`/api/user/${session?.user?.email}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ movieId: movie.id }),
-      });
-      const data = await res.json();
-      setUser(data);
-      setIsFavorite(data.favorites.find((item: number) => item === movie.id));
-      router.refresh()
-    } catch (err) {
-      console.log("Failed to handle my list", err);
-    }
-  };
+
+  
   
   return loading ? (
     <Loader />
@@ -129,12 +95,10 @@ const Modal = ({ movie, closeModal }: Props) => {
             {isFavorite ? (
               <RemoveCircle
                 className="cursor-pointer text-pink-1"
-                onClick={handleMyList}
               />
             ) : (
               <AddCircle
                 className="cursor-pointer text-pink-1"
-                onClick={handleMyList}
               />
             )}
           </div>
