@@ -11,9 +11,9 @@ const MyList = async () => {
   return (
     <>
       <Navbar />
-      <div className="list">
+      <div className="movie-list">
         {genres.map((genre: Genre ) => (
-          <CategoryList key={12} title={genre.name} movies={genre.movies} />
+          <CategoryList key={12} title="Assistir mais tarde" movies={genre.movies} />
         ))}
         
       </div>
