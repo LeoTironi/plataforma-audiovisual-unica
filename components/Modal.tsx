@@ -1,7 +1,7 @@
 "use client";
 
 import { Genre, Movie, Video } from "@lib/types";
-import { AddCircle, CancelRounded, RemoveCircle } from "@mui/icons-material";
+import { AddCircle, CancelRounded, RemoveCircle, PlayCircleOutlineOutlined } from "@mui/icons-material";
 import React, { useEffect, useState } from "react";
 import Loader from "./Loader";
 import { useRouter } from "next/navigation";
