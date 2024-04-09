@@ -25,7 +25,7 @@
 }
 
 .logo {
-  @apply w-48;
+  @apply w-48 brightness-0 invert;
 }
 
 .form {
@@ -54,7 +54,7 @@
 
 /* Navbar */
 .navbar {
-  @apply top-0 z-10 sticky flex items-center justify-between py-3 px-10;
+  @apply top-0 z-10 sticky flex items-center justify-between py-3 px-10 transition-colors;
 }
 
 .nav-links {

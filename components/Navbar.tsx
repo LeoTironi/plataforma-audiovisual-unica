@@ -1,14 +1,17 @@
 "use client";
 
 import { Search } from "@mui/icons-material";
-import { signOut } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const Navbar = () => {
   const router = useRouter();
+  const { data: session, status } = useSession();
 
+  const user = session?.user;
+  
   const [search, setSearch] = useState<string>("");
   const [dropdownMenu, setDropdownMenu] = useState<boolean>(false);
 
@@ -29,7 +32,8 @@ const Navbar = () => {
   }, []);
 
   const handleLogout = () => {
-    router.push("/login")
+    signOut();
+    router.push("/login");
   }
 
   return (
@@ -61,21 +65,27 @@ const Navbar = () => {
             />
           </button>
         </div>
+        {user ?
+        <>
+          <h2 className="text-white">{`${user.name}`}</h2>
+          <img
+            src="/assets/profile_icon.jpg"
+            className="profile"
+            alt="Perfil"
+            onClick={() => setDropdownMenu(!dropdownMenu)}
+            />
 
-        <img
-          src="/assets/profile_icon.jpg"
-          className="profile"
-          alt="Perfil"
-          onClick={() => setDropdownMenu(!dropdownMenu)}
-        />
-
-        {dropdownMenu && (
-          <div className="dropdown-menu">
-            <Link href="/">Início</Link>
-            <Link href="/my-list">Minha Lista</Link>
-            <a onClick={handleLogout}>Sair</a>
-          </div>
-        )}
+          {dropdownMenu && (
+            <div className="dropdown-menu">
+              <Link href="/">Início</Link>
+              <Link href="/my-list">Minha Lista</Link>
+              <a onClick={handleLogout}>Sair</a>
+            </div>
+          )}
+        </>
+        :
+        <Link href={"/login"} className="nav-link">Logar</Link>
+      }
       </div>
     </div>
   );
