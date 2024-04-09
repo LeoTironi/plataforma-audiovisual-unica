@@ -85,10 +85,8 @@ const Modal = ({ movie, closeModal }: Props) => {
 
       <div className="modal-content">
         <div className="hero-btns">
-          <button className="hero-btn" onClick={() => router.push(`/watch/${video}`)} >
-            <PlayCircleOutlineOutlined sx={{ color: "black", fontSize: "30px",}}/>
-            <div className="text-black">Assistir</div>
-            
+          <button className="hero-btn" onClick={() => router.push(`/watch/${video}`)}>
+              <PlayCircleOutlineOutlined /> Assistir
           </button>
         </div>
         <div className="flex justify-between">
